@@ -6,8 +6,6 @@ services:
     image: smartit/odoo:13
     depends_on:
       - database
-    networks:
-      - ${NETWORK}
     ports:
       - ${PORT}:8069
     volumes:
@@ -22,7 +20,5 @@ services:
       - POSTGRES_USER=${USER}
       - POSTGRES_PASSWORD=${PASSWORD}
       - PGDATA=/var/lib/postgresql/data/pgdata
-    networks:
-      - ${NETWORK}
     volumes:
       - /docker/${NAME}/var:/var

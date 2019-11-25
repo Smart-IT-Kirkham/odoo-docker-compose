@@ -15,8 +15,8 @@ services:
     ports:
       - ${PORT}:8069
     volumes:
-      - var:/var
-      - addons:/mnt/extra-addons
+      - odoo_var/${NAME}:/var
+      - odoo_addons/${NAME}:/mnt/extra-addons
 
   database:                
     container_name: ${HOST}
@@ -27,16 +27,9 @@ services:
       - POSTGRES_PASSWORD=${PASSWORD}
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - var:/var
+      - odoo_var/${NAME}:/var
 
 volumes:
-  var:
-#    driver_opts:
-#      type: none
-#      device: ${FILEPATH}${NAME}/var
-#      o: bind
-  addons:
-#    driver_opts:
-#      type: none
-#      device: ${FILEPATH}${NAME}/addons
-#      o: bind
+  odoo_var:
+  odoo_addons:
+

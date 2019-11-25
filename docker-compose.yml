@@ -1,7 +1,7 @@
 ---
 version: '2'
 services:
-  odoo:                   # Odoo Service Name
+  odoo:
     container_name: ${NAME}
     image: smartit/odoo:13
     depends_on:
@@ -14,7 +14,7 @@ services:
       - /docker/${NAME}/var:/var
       - /docker/${NAME}/addons:/mnt/extra-addons
 
-  database:                # Database Service Name (Must match "Host in .env")
+  database:                
     container_name: ${HOST}
     image: postgres:10
     environment:

@@ -1,0 +1,28 @@
+---
+version: '2'
+services:
+  odoo:                   # Odoo Service Name
+    container_name: ${NAME}
+    image: smartit/odoo:13
+    depends_on:
+      - database
+    networks:
+      - ${NETWORK}
+    ports:
+      - ${PORT}:8069
+    volumes:
+      - /docker/${NAME}/var:/var
+      - /docker/${NAME}/addons:/mnt/extra-addons
+
+  database:                # Database Service Name (Must match "Host in .env")
+    container_name: ${HOST}
+    image: postgres:10
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${USER}
+      - POSTGRES_PASSWORD=${PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      - ${NETWORK}
+    volumes:
+      - ./var:/var

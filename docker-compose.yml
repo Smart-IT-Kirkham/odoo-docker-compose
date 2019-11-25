@@ -25,4 +25,4 @@ services:
     networks:
       - ${NETWORK}
     volumes:
-      - ./var:/var
+      - /docker/${NAME}:/var

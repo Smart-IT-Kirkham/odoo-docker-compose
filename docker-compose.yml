@@ -31,12 +31,12 @@ services:
 
 volumes:
   var:
-    driver_opts:
+#    driver_opts:
 #      type: none
-      device: ${FILEPATH}${NAME}/var
+#      device: ${FILEPATH}${NAME}/var
 #      o: bind
   addons:
-    driver_opts:
+#    driver_opts:
 #      type: none
-      device: ${FILEPATH}${NAME}/addons
+#      device: ${FILEPATH}${NAME}/addons
 #      o: bind

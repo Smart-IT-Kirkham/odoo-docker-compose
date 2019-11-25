@@ -3,7 +3,7 @@ version: '2'
 services:
   odoo:
     container_name: ${NAME}
-    image: smartit/odoo:13
+    image: ${REPO}:${ODVER}
     depends_on:
       - database
     environment:
@@ -15,16 +15,16 @@ services:
     ports:
       - ${PORT}:8069
     volumes:
-      - /docker/${NAME}/var:/var
-      - /docker/${NAME}/addons:/mnt/extra-addons
+      - ${FILEPATH}${NAME}/var:/var
+      - ${FILEPATH}${NAME}/addons:/mnt/extra-addons
 
   database:                
     container_name: ${HOST}
-    image: postgres:10
+    image: ${DBREPO}:${DBVER}
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=${USER}
       - POSTGRES_PASSWORD=${PASSWORD}
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - /docker/${NAME}/var:/var
+      - ${FILEPATH}${NAME}/var:/var

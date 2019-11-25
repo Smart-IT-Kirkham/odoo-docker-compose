@@ -15,8 +15,8 @@ services:
     ports:
       - ${PORT}:8069
     volumes:
-      - ${FILEPATH}${NAME}/var:/var
-      - ${FILEPATH}${NAME}/addons:/mnt/extra-addons
+      - var:/var
+      - addons:/mnt/extra-addons
 
   database:                
     container_name: ${HOST}
@@ -27,4 +27,16 @@ services:
       - POSTGRES_PASSWORD=${PASSWORD}
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - ${FILEPATH}${NAME}/var:/var
+      - var:/var
+
+volumes:
+  var:
+    driver_opts:
+      type: none
+      device: ${FILEPATH}${NAME}/var
+      o: bind
+  addons:
+    driver_opts:
+      type: none
+      device: ${FILEPATH}${NAME}/addons
+      o: bind

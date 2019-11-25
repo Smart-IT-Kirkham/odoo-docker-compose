@@ -6,6 +6,12 @@ services:
     image: smartit/odoo:13
     depends_on:
       - database
+    environment:
+      - NAME=${NAME}
+      - HOST=${HOST}
+      - USER=${USER}
+      - PASSWORD=${PASSWORD}
+      - ADDONDIR=${ADDONDIR}
     ports:
       - ${PORT}:8069
     volumes:

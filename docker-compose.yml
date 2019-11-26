@@ -37,5 +37,8 @@ networks:
   
 volumes:
   run_data:
+    name: ${NAME}_run_data
   addons_data:
+    name: ${NAME}_addons_data
   db_data:
+    name: ${NAME}_db_data

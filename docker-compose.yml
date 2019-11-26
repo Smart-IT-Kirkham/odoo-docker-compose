@@ -12,6 +12,8 @@ services:
       - USER=${USER}
       - PASSWORD=${PASSWORD}
       - ADDONDIR=${ADDONDIR}
+    networks:
+      - network
     ports:
       - ${PORT}:8069
     volumes:
@@ -30,6 +32,9 @@ services:
       - run_data:/var/run/postgresql
       - db_data:/var/lib/postgresql/data
       
+networks:
+  network:
+  
 volumes:
   run_data:
   addons_data:

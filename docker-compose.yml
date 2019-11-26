@@ -23,6 +23,8 @@ services:
   database:                
     container_name: ${HOST}
     image: ${DBREPO}:${DBVER}
+    networks:
+      - network
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=${USER}

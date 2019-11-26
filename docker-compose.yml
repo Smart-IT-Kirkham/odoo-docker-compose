@@ -31,6 +31,6 @@ services:
       - db_data:/var/lib/postgresql/data/pgdata
       
 volumes:
-  var_data:
+  run_data:
   addons_data:
   db_data:

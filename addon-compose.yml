@@ -4,6 +4,10 @@ services:
   odoo:
     container_name: ${VOLNAME}_${URL}
     image: ${ADREPO}:latest
+    environment:
+      - VOLNAME=${VOLNAME}
+      - ADREPO=${ADREPO}
+      - URL=${URL}
     volumes:
       - addons_data:/mnt/extra-addons
   

@@ -1,0 +1,13 @@
+---
+version: '2'
+services:
+  odoo:
+    container_name: ${VOLNAME}_${URL}
+    image: ${ADREPO}:latest
+    volumes:
+      - addons_data:/mnt/extra-addons
+  
+volumes:
+  addons_data:
+    name: ${VOLNAME}_addons_data
+    external:

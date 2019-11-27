@@ -9,5 +9,5 @@ services:
   
 volumes:
   addons_data:
-     external: true
+     external:
        name: ${VOLNAME}_addons_data

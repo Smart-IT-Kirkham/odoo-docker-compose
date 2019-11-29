@@ -45,7 +45,7 @@ services:
       - URL1=${URL1}
       - URL2=${URL2}
       - URL3=${URL3}
-      - BRANCHE=${BRANCHE}
+      - BRANCHE=${ODVER}
       - BRANCH1=${BRANCH1}
       - BRANCH2=${BRANCH2}
       - BRANCH3=${BRANCH3}

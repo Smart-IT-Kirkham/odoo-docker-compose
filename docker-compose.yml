@@ -6,6 +6,7 @@ services:
     image: ${REPO}:${ODVER}
     depends_on:
       - database
+      - addons
     environment:
       - NAME=${NAME}
       - HOST=${HOST}

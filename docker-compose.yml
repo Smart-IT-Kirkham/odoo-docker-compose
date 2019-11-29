@@ -49,6 +49,7 @@ services:
       - BRANCH1=${BRANCH1}
       - BRANCH2=${BRANCH2}
       - BRANCH3=${BRANCH3}
+      - ADDONDIR=${ADDONDIR}
     volumes:
       - addons_data:/mnt/extra-addons
       

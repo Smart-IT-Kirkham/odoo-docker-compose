@@ -34,6 +34,20 @@ services:
       - run_data:/var/run/postgresql
       - db_data:/var/lib/postgresql/data
       
+  addons:
+    container_name: ${NAME}_addons
+    image: ${ADREPO}:latest
+    networks:
+      - network
+    environment:
+      - ADREPO=${ADREPO}
+      - URLE=${URLE}
+      - URL1=${URL1}
+      - URL2=${URL2}
+      - URL3=${URL3}
+    volumes:
+      - addons_data:/mnt/extra-addons
+      
 networks:
   network:
   

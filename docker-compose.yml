@@ -37,7 +37,7 @@ services:
       
   addons:
     container_name: ${NAME}_addons
-    image: ${ADREPO}:${ODVER}.0
+    image: ${ADREPO}:${ODVER}
     networks:
       - network
     environment:

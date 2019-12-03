@@ -37,16 +37,14 @@ services:
       
   addons:
     container_name: ${NAME}_addons
-    image: ${ADREPO}:latest
+    image: ${ADREPO}:${ODVER}.0
     networks:
       - network
     environment:
       - ADREPO=${ADREPO}
-      - URLE=${URLE}
       - URL1=${URL1}
       - URL2=${URL2}
       - URL3=${URL3}
-      - BRANCHE=${ODVER}.0
       - BRANCH1=${BRANCH1}
       - BRANCH2=${BRANCH2}
       - BRANCH3=${BRANCH3}

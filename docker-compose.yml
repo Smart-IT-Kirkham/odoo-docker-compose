@@ -59,6 +59,8 @@ networks:
   network:
   
 volumes:
+  conf_data:
+    name: ${NAME}_conf_data
   run_data:
     name: ${NAME}_run_data
   addons_data:

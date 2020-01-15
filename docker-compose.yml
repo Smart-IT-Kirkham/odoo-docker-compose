@@ -18,7 +18,7 @@ services:
     ports:
       - ${PORT}:8069
     volumes:
-      - conf_data/etc/odoo/
+      - conf_data:/etc/odoo/
       - run_data:/var/run/postgresql
       - addons_data:/mnt/extra-addons
 

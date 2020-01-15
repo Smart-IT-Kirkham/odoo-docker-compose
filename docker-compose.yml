@@ -18,7 +18,7 @@ services:
     ports:
       - ${PORT}:8069
     volumes:
-      - conf_data/etc/odoo/odoo.conf
+      - conf_data/etc/odoo/odoo
       - run_data:/var/run/postgresql
       - addons_data:/mnt/extra-addons
 
@@ -33,7 +33,7 @@ services:
       - POSTGRES_PASSWORD=${PASSWORD}
  #     - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - conf_data:/etc/odoo/odoo.conf
+      - conf_data:/etc/odoo/odoo
       - run_data:/var/run/postgresql
       - db_data:/var/lib/postgresql/data
       

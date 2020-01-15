@@ -33,7 +33,7 @@ services:
       - POSTGRES_PASSWORD=${PASSWORD}
  #     - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - conf_data/etc/odoo/odoo.conf
+      - conf_data:/etc/odoo/odoo.conf
       - run_data:/var/run/postgresql
       - db_data:/var/lib/postgresql/data
       
@@ -52,7 +52,7 @@ services:
       - BRANCH3=${BRANCH3}
       - ADDONDIR=${ADDONDIR}
     volumes:
-      - conf_data/etc/odoo/odoo.conf
+      - conf_data:/etc/odoo/odoo.conf
       - addons_data:/mnt/extra-addons
       
 networks:

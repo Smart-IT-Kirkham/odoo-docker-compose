@@ -21,6 +21,7 @@ services:
       - conf_data:/etc/odoo/
       - run_data:/var/run/postgresql
       - addons_data:/mnt/extra-addons
+      - /mnt/shared_data:/mnt/shared_data
 
   database:                
     container_name: ${HOST}
@@ -36,6 +37,7 @@ services:
       - conf_data:/etc/odoo/
       - run_data:/var/run/postgresql
       - db_data:/var/lib/postgresql/data
+      - /mnt/shared_data:/mnt/shared_data
       
   addons:
     container_name: ${NAME}_addons
@@ -54,6 +56,7 @@ services:
     volumes:
       - conf_data:/etc/odoo/
       - addons_data:/mnt/extra-addons
+      - /mnt/shared_data:/mnt/shared_data
       
 networks:
   network:

@@ -18,7 +18,7 @@ services:
     ports:
       - ${PORT}:8069
     volumes:
-      - conf_data:/etc/odoo/
+      - conf_data:/opt/odoo/
       - run_data:/var/run/postgresql
       - addons_data:/mnt/extra-addons
       - /mnt/shared_data:/mnt/shared_data
@@ -34,7 +34,7 @@ services:
       - POSTGRES_PASSWORD=${PASSWORD}
  #     - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - conf_data:/etc/odoo/
+      - conf_data:/opt/odoo/
       - run_data:/var/run/postgresql
       - db_data:/var/lib/postgresql/data
       - /mnt/shared_data:/mnt/shared_data
@@ -54,7 +54,7 @@ services:
       - BRANCH3=${BRANCH3}
       - ADDONDIR=${ADDONDIR}
     volumes:
-      - conf_data:/etc/odoo/
+      - conf_data:/opt/odoo/
       - addons_data:/mnt/extra-addons
       - /mnt/shared_data:/mnt/shared_data
       

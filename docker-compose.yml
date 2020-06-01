@@ -29,7 +29,6 @@ services:
     networks:
       - network
     environment:
-      - POSTGRES_DB=postgres
       - POSTGRES_USER=${USER}
       - POSTGRES_PASSWORD=${PASSWORD}
  #     - PGDATA=/var/lib/postgresql/data/pgdata

@@ -22,6 +22,7 @@ services:
       - run_data:/var/run/postgresql
       - addons_data:/mnt/extra-addons
       - /mnt/shared_data:/mnt/shared_data
+      - /etc/nginx/docker/${NAME}:/etc/nginx
 
   database:                
     container_name: ${HOST}

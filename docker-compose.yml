@@ -9,7 +9,7 @@ services:
       - addons
     environment:
       - NAME=${NAME}
-      - HOST=${HOST}
+      - HOST=${NAME}_db
       - USER=${USER}
       - PASSWORD=${PASSWORD}
       - ADDONDIR=${ADDONDIR}
@@ -25,7 +25,7 @@ services:
       - /etc/nginx/docker/:/etc/nginx/
 
   database:                
-    container_name: ${HOST}
+    container_name: ${NAME}_db
     image: ${DBREPO}:${DBVER}
     networks:
       - network

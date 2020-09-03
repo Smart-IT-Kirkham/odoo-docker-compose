@@ -61,7 +61,6 @@ services:
       
 networks:
   network:
-    driver: overlay
   
 volumes:
   conf_data:

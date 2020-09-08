@@ -2,14 +2,14 @@
 version: '2'
 services:
   odoo:
-    container_name: ${NAME}
+    container_name: ${TYPE}_${NAME}
     image: ${REPO}:${ODVER}
     depends_on:
       - database
       - addons
     environment:
       - NAME=${NAME}
-      - HOST=${NAME}_db
+      - HOST=${TYPE}_${NAME}_db
       - USER=${USER}
       - PASSWORD=${PASSWORD}
       - ADDONDIR=${ADDONDIR}
@@ -25,7 +25,7 @@ services:
       - /etc/nginx/docker/:/etc/nginx/
 
   database:                
-    container_name: ${NAME}_db
+    container_name: ${TYPE}_${NAME}_db
     image: ${DBREPO}:${DBVER}
     networks:
       - network
@@ -41,7 +41,7 @@ services:
       - /mnt/smartit/share/shared_data:/mnt/shared_data
       
   addons:
-    container_name: ${NAME}_addons
+    container_name: ${TYPE}_${NAME}_addons
     image: ${ADREPO}:${ODVER}
     networks:
       - network

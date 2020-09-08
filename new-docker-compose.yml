@@ -1,0 +1,63 @@
+---
+version: '2'
+services:
+  odoo:
+    container_name: ${NAME}
+    image: ${REPO}:${ODVER}
+    depends_on:
+      - database
+      - addons
+    environment:
+      - NAME=${NAME}
+      - HOST=${NAME}_db
+      - USER=${USER}
+      - PASSWORD=${PASSWORD}
+      - ADDONDIR=${ADDONDIR}
+    networks:
+      - network
+    ports:
+      - ${PORT}:8069
+    volumes:
+      - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
+      - /mnt/smartit/share/container_data/${NAME}/postgres/run:/var/run/postgresql
+      - /mnt/smartit/share/container_data/${NAME}/addons:/mnt/extra-addons
+      - /mnt/smartit/share/container_data/${NAME}/postgres/data:/var/lib/postgresql/data
+      - /etc/nginx/docker/:/etc/nginx/
+
+  database:                
+    container_name: ${NAME}_db
+    image: ${DBREPO}:${DBVER}
+    networks:
+      - network
+    environment:
+      - POSTGRES_USER=${USER}
+      - POSTGRES_PASSWORD=${PASSWORD}
+      - DB_NAME=${NAME}
+ #     - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
+      - /mnt/smartit/share/container_data/${NAME}/postgres/run:/var/run/postgresql
+      - /mnt/smartit/share/container_data/${NAME}/postgres/data:/var/lib/postgresql/data
+      - /mnt/smartit/share/shared_data:/mnt/shared_data
+      
+  addons:
+    container_name: ${NAME}_addons
+    image: ${ADREPO}:${ODVER}
+    networks:
+      - network
+    environment:
+      - ADREPO=${ADREPO}
+      - URL1=${URL1}
+      - URL2=${URL2}
+      - URL3=${URL3}
+      - BRANCH1=${BRANCH1}
+      - BRANCH2=${BRANCH2}
+      - BRANCH3=${BRANCH3}
+      - ADDONDIR=${ADDONDIR}
+    volumes:
+      - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
+      - /mnt/smartit/share/container_data/${NAME}/addons:/mnt/extra-addons
+      - /mnt/smartit/share/shared_data:/mnt/shared_data
+      
+networks:
+  network:

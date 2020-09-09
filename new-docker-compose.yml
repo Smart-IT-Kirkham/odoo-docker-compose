@@ -18,11 +18,14 @@ services:
     ports:
       - ${PORT}:8069
     volumes:
-      - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
-      - /mnt/smartit/share/container_data/${NAME}/postgres/run:/var/run/postgresql
-      - /mnt/smartit/share/container_data/${NAME}/addons:/mnt/extra-addons
-      - /mnt/smartit/share/container_data/${NAME}/postgres/data:/var/lib/postgresql/data
+      - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo
+#      - /mnt/smartit/share/container_data/${NAME}/postgres/run:/var/run/postgresql
+      - run_data:/var/run/postgresql
+#      - /mnt/smartit/share/container_data/${NAME}/addons:/mnt/extra-addons
+      - addons_data:/mnt/extra-addons
+      - /mnt/shared_data:/mnt/shared_data
       - /etc/nginx/docker/:/etc/nginx/
+      - /mnt/smartit/share/container_data/${NAME}/logs:/var/log/odoo
 
   database:                
     container_name: ${TYPE}_${NAME}_db
@@ -36,8 +39,9 @@ services:
  #     - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
-      - /mnt/smartit/share/container_data/${NAME}/postgres/run:/var/run/postgresql
-      - /mnt/smartit/share/container_data/${NAME}/postgres/data:/var/lib/postgresql/data
+      - run_data:/var/run/postgresql
+#      - /mnt/smartit/share/container_data/${NAME}/postgres/data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
       - /mnt/smartit/share/shared_data:/mnt/shared_data
       
   addons:
@@ -56,8 +60,18 @@ services:
       - ADDONDIR=${ADDONDIR}
     volumes:
       - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
-      - /mnt/smartit/share/container_data/${NAME}/addons:/mnt/extra-addons
+      - addons_data:/mnt/extra-addons
       - /mnt/smartit/share/shared_data:/mnt/shared_data
       
 networks:
   network:
+
+volumes:
+#  conf_data:
+#    name: ${NAME}_conf_data
+  run_data:
+    name: ${NAME}_run_data
+  addons_data:
+    name: ${NAME}_addons_data
+  db_data:
+    name: ${NAME}_db_data

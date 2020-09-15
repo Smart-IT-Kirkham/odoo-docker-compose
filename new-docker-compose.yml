@@ -23,7 +23,7 @@ services:
       - run_data:/var/run/postgresql
 #      - /mnt/smartit/share/container_data/${NAME}/addons:/mnt/extra-addons
       - addons_data:/mnt/extra-addons
-      - /mnt/shared_data:/mnt/shared_data
+      - /mnt/smartit/share/shared_data:/mnt/shared_data
       - /etc/nginx/docker/:/etc/nginx/
       - /mnt/smartit/share/container_data/${NAME}/logs:/var/log/odoo
 

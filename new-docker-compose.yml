@@ -13,6 +13,13 @@ services:
       - USER=${USER}
       - PASSWORD=${PASSWORD}
       - ADDONDIR=${ADDONDIR}
+    resources:
+        limits:
+          #cpus: '0.50'
+          memory: 1024M
+        reservations:
+          #cpus: '0.25'
+          memory: 512M
     networks:
       - network
     ports:
@@ -37,6 +44,13 @@ services:
       - POSTGRES_PASSWORD=${PASSWORD}
       - DB_NAME=${NAME}
  #     - PGDATA=/var/lib/postgresql/data/pgdata
+    resources:
+        limits:
+          #cpus: '0.50'
+          memory: 512M
+        reservations:
+          #cpus: '0.25'
+          memory: 256M
     volumes:
       - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
       - run_data:/var/run/postgresql
@@ -58,6 +72,13 @@ services:
       - BRANCH2=${BRANCH2}
       - BRANCH3=${BRANCH3}
       - ADDONDIR=${ADDONDIR}
+    resources:
+        limits:
+          #cpus: '0.50'
+          memory: 16M
+        reservations:
+          #cpus: '0.25'
+          memory: 8M
     volumes:
       - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
       - addons_data:/mnt/extra-addons

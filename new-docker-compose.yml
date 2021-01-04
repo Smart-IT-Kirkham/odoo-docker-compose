@@ -15,6 +15,7 @@ services:
       - ADDONDIR=${ADDONDIR}
     mem_limit: 2048m
     mem_reservation: 512m
+    cpus: '1'
     networks:
       - network
     ports:

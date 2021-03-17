@@ -18,8 +18,9 @@ services:
     cpus: 2
     networks:
       - network
-    ports:
-      - ${PORT}:8069
+#    ports:
+#      - ${PORT}:8069
+    ports: ${PORT}:8069
     volumes:
       - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo
 #      - /mnt/smartit/share/container_data/${NAME}/postgres/run:/var/run/postgresql

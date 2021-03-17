@@ -1,5 +1,5 @@
 ---
-version: '2.2'
+version: '3'
 services:
   odoo:
     container_name: ${TYPE}_${NAME}

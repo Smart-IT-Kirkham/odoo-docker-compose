@@ -19,7 +19,7 @@ services:
       - BRANCH1=${BRANCH1}
       - BRANCH2=${BRANCH2}
       - BRANCH3=${BRANCH3}
-      - ADDONDIR=${ADDONDIR}
+      - ENTADD=${ENTADD}
     mem_limit: 2048m
     mem_reservation: 512m
     cpus: 2

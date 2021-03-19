@@ -1,0 +1,64 @@
+---
+version: '3'
+services:
+  odoo:
+    container_name: ${TYPE}_${NAME}
+    image: ${REPO}:${OSVER)
+    depends_on:
+      - database
+    environment:
+      - ODVER=${ODVER}
+      - NAME=${NAME}
+      - HOST=${TYPE}_${NAME}_db
+      - USER=${USER}
+      - PASSWORD=${PASSWORD}
+      - ADREPO=${ADREPO}
+      - URL1=${URL1}
+      - URL2=${URL2}
+      - URL3=${URL3}
+      - BRANCH1=${BRANCH1}
+      - BRANCH2=${BRANCH2}
+      - BRANCH3=${BRANCH3}
+      - ADDONDIR=${ADDONDIR}
+    mem_limit: 2048m
+    mem_reservation: 512m
+    cpus: 2
+    networks:
+      - network
+    ports:
+      - 0.0.0.0:${PORT}:8069
+    volumes:
+      - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo
+      - run_data:/var/run/postgresql
+      - addons_data:/mnt/extra-addons
+      - /mnt/smartit/share/shared_data:/mnt/shared_data
+      - /etc/nginx/docker/:/etc/nginx/
+      - /mnt/smartit/share/container_data/${NAME}/logs:/var/log/odoo
+
+  database:                
+    container_name: ${TYPE}_${NAME}_db
+    image: ${DBREPO}:${DBVER}
+    networks:
+      - network
+    environment:
+      - POSTGRES_USER=${USER}
+      - POSTGRES_PASSWORD=${PASSWORD}
+      - DB_NAME=${NAME}
+    mem_limit: 512m
+    mem_reservation: 256m
+    volumes:
+      - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo/
+      - run_data:/var/run/postgresql
+      - db_data:/var/lib/postgresql/data
+      - /mnt/smartit/share/shared_data:/mnt/shared_data
+      
+networks:
+  network:
+
+volumes:
+  run_data:
+    name: ${NAME}_run_data
+  addons_data:
+    name: ${NAME}_addons_data
+  db_data:
+    name: ${NAME}_db_data

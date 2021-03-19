@@ -3,7 +3,7 @@ version: '3'
 services:
   odoo:
     container_name: ${TYPE}_${NAME}
-    image: ${REPO}:${OSVER)
+    image: ${REPO}:${OSVER}
     depends_on:
       - database
     environment:

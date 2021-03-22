@@ -30,7 +30,7 @@ services:
     volumes:
       - /mnt/smartit/share/container_data/${NAME}/odoo:/opt/odoo
       - run_data:/var/run/postgresql
-      - addons_data:/mnt/extra-addons
+#      - addons_data:/mnt/extra-addons
       - /mnt/smartit/share/shared_data:/mnt/shared_data
       - /etc/nginx/docker/:/etc/nginx/
       - /mnt/smartit/share/container_data/${NAME}/logs:/var/log/odoo
@@ -58,7 +58,7 @@ networks:
 volumes:
   run_data:
     name: ${NAME}_run_data
-  addons_data:
-    name: ${NAME}_addons_data
+#  addons_data:
+#    name: ${NAME}_addons_data
   db_data:
     name: ${NAME}_db_data

@@ -33,7 +33,7 @@ services:
       - run_data:/var/run/postgresql
 #      - addons_data:/mnt/extra-addons
       - /mnt/smartit/share/shared_data:/mnt/shared_data
-      - /etc/nginx/docker/:/etc/nginx/
+      - /etc/nginx/docker_conf.d/:/etc/nginx/
       - /mnt/smartit/share/container_data/${NAME}/logs:/var/log/odoo
 
   database:                
